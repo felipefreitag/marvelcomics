@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import CircularProgress from 'material-ui/CircularProgress';
+import CircularProgress from 'material-ui/CircularProgress'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import IconNext from 'material-ui/svg-icons/image/navigate-next'
 
 import ShowStory from './ShowStory'
 import { getApiKeys } from './getApiKeys'
@@ -16,8 +18,16 @@ class Story extends Component {
     };
   }
 
-  componentDidMount() {
+  randomize(total) {
+    return Math.floor(Math.random() * total)
+  }
+
+  loadStory() {
+    this.setState({ loading: true })
     const characterId = "1009368" // Iron Man
+    const total = 2915 // Total number of stories for Iron Man
+    const storyNum = this.randomize(total)
+    console.log(storyNum)
     const ts = "1";
     const { apiKey, hash } = getApiKeys(ts)
     const url = `http://gateway.marvel.com/v1/public/characters/${characterId}/stories`
@@ -26,10 +36,13 @@ class Story extends Component {
         "apikey": apiKey,
         "ts": ts,
         "hash": hash,
+        "limit": 1,
+        "offset": storyNum
       }
     }).then((response) => {
+        console.log(response)
         this.setState({
-          story: response.data.data.results[1],
+          story: response.data.data.results[0],
           attributionText: response.data.attributionText,
           loading: false
         });
@@ -37,6 +50,10 @@ class Story extends Component {
       .catch((error) => {
         this.setState({ loading: false });
       });
+  }
+
+  componentDidMount() {
+    this.loadStory();
   }
 
   render() {
@@ -49,6 +66,15 @@ class Story extends Component {
           :
             <div>
               <ShowStory story={ this.state.story }/>
+              <FloatingActionButton
+                backgroundColor='red'
+                onClick={() => this.loadStory() }
+                style={{
+                  float: 'right',
+                }}
+              >
+                <IconNext />
+              </FloatingActionButton>
               <div style={{
                 textAlign: 'center',
                 width: '100%',
@@ -59,6 +85,7 @@ class Story extends Component {
               }}>
                 <p>{ this.state.attributionText }</p>
               </div>
+
             </div>
         }
       </div>

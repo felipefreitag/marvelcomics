@@ -11,7 +11,7 @@ class App extends Component {
       <MuiThemeProvider>
         <PageLimiter>
           <AppBar
-            title="Marvel Story"
+            title="Marvel Stories - Iron Man"
             showMenuIconButton={false}
             style={{
               backgroundColor: 'black',
