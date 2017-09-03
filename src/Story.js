@@ -27,7 +27,6 @@ class Story extends Component {
     const characterId = "1009368" // Iron Man
     const total = 2915 // Total number of stories for Iron Man
     const storyNum = this.randomize(total)
-    console.log(storyNum)
     const ts = "1";
     const { apiKey, hash } = getApiKeys(ts)
     const url = `https://gateway.marvel.com/v1/public/characters/${characterId}/stories`
