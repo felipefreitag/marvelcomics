@@ -30,7 +30,7 @@ class Story extends Component {
     console.log(storyNum)
     const ts = "1";
     const { apiKey, hash } = getApiKeys(ts)
-    const url = `http://gateway.marvel.com/v1/public/characters/${characterId}/stories`
+    const url = `https://gateway.marvel.com/v1/public/characters/${characterId}/stories`
     axios.get(url, {
       params: {
         "apikey": apiKey,
@@ -40,7 +40,6 @@ class Story extends Component {
         "offset": storyNum
       }
     }).then((response) => {
-        console.log(response)
         this.setState({
           story: response.data.data.results[0],
           attributionText: response.data.attributionText,

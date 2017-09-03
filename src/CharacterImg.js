@@ -15,7 +15,7 @@ class CharacterImg extends Component {
     };
   }
 
-  componentDidMount() {
+  loadImg() {
     const ts = "2";
     const { apiKey, hash } = getApiKeys(ts)
     const url = this.state.resourceURI
@@ -37,6 +37,10 @@ class CharacterImg extends Component {
           loading: false,
         })
       });
+  }
+
+  componentDidMount() {
+    this.loadImg()
   }
 
   render() {
