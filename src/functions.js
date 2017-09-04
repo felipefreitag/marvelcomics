@@ -9,4 +9,12 @@ function getApiKeys(ts) {
   }
 }
 
-export { getApiKeys }
+function convertToHTTPS(path) {
+  return path.replace(/^http:\/\//i, 'https://')
+}
+
+function randomize(total) {
+  return Math.floor(Math.random() * total)
+}
+
+export { getApiKeys, convertToHTTPS, randomize }

@@ -5,7 +5,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import IconNext from 'material-ui/svg-icons/image/navigate-next'
 
 import ShowStory from './ShowStory'
-import { getApiKeys } from './getApiKeys'
+import { getApiKeys, randomize } from './functions'
 
 class Story extends Component {
   constructor(props) {
@@ -18,15 +18,11 @@ class Story extends Component {
     };
   }
 
-  randomize(total) {
-    return Math.floor(Math.random() * total)
-  }
-
   loadStory() {
     this.setState({ loading: true })
     const characterId = "1009368" // Iron Man
     const total = 2915 // Total number of stories for Iron Man
-    const storyNum = this.randomize(total)
+    const storyNum = randomize(total)
     const ts = "1";
     const { apiKey, hash } = getApiKeys(ts)
     const url = `https://gateway.marvel.com/v1/public/characters/${characterId}/stories`

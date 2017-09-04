@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import CircularProgress from 'material-ui/CircularProgress';
-import { getApiKeys } from './getApiKeys'
+import { getApiKeys, convertToHTTPS } from './functions'
 
 class CharacterImg extends Component {
   constructor(props) {
@@ -15,14 +15,10 @@ class CharacterImg extends Component {
     };
   }
 
-  convertToHTTPS(path) {
-    return path.replace(/^http:\/\//i, 'https://')
-  }
-
   loadImg() {
     const ts = "2";
     const { apiKey, hash } = getApiKeys(ts)
-    const url = this.convertToHTTPS(this.state.resourceURI)
+    const url = convertToHTTPS(this.state.resourceURI)
     axios.get(url, {
       params: {
         "apikey": apiKey,
@@ -31,16 +27,14 @@ class CharacterImg extends Component {
       }
     }).then((response) => {
         const thumbnail = response.data.data.results[0].thumbnail
-        const path = this.convertToHTTPS(thumbnail.path)
+        const path = convertToHTTPS(thumbnail.path)
         this.setState({
           thumbnailURL: `${path}.${thumbnail.extension}`,
           loading: false,
         })
       })
       .catch((error) => {
-        this.setState({
-          loading: false,
-        })
+        this.setState({ loading: false })
       });
   }
 
