@@ -15,10 +15,14 @@ class CharacterImg extends Component {
     };
   }
 
+  convertToHTTPS(path) {
+    return path.replace(/^http:\/\//i, 'https://')
+  }
+
   loadImg() {
     const ts = "2";
     const { apiKey, hash } = getApiKeys(ts)
-    const url = this.state.resourceURI
+    const url = this.convertToHTTPS(this.state.resourceURI)
     axios.get(url, {
       params: {
         "apikey": apiKey,
@@ -27,7 +31,7 @@ class CharacterImg extends Component {
       }
     }).then((response) => {
         const thumbnail = response.data.data.results[0].thumbnail
-        const path = thumbnail.path.replace(/^http:\/\//i, 'https://')
+        const path = this.convertToHTTPS(thumbnail.path)
         this.setState({
           thumbnailURL: `${path}.${thumbnail.extension}`,
           loading: false,
