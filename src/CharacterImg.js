@@ -27,8 +27,9 @@ class CharacterImg extends Component {
       }
     }).then((response) => {
         const thumbnail = response.data.data.results[0].thumbnail
+        const path = thumbnail.path.replace(/^http:\/\//i, 'https://')
         this.setState({
-          thumbnailURL: `${thumbnail.path}.${thumbnail.extension}`,
+          thumbnailURL: `${path}.${thumbnail.extension}`,
           loading: false,
         })
       })
