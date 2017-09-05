@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import App from '../App'
+import PageLimiter from '../PageLimiter'
 
-describe('App', () => {
+describe('PageLimiter', () => {
   it('renders without crashing', () => {
-    shallow(<App />)
+    shallow(<PageLimiter />)
   })
 })
