@@ -40,7 +40,7 @@ const ShowCharacters = ({ characters }) => (
         )}
       </Media>
       :
-      "No characters found"
+      <p>No characters found</p>
     }
   </div>
 )

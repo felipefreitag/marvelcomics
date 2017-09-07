@@ -1,6 +1,6 @@
 # Marvel Story - Code test
 
-The task is to generate an HTML page that lists the characters from a Marvel-story, using the Marvel API.
+Gets a random Iron Man story from the Marvel API and displays its title, description and characters.
 
 [See a running example here.](https://felipefreitag.github.io/marvelcomics)
 

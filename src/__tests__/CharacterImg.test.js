@@ -16,7 +16,7 @@ describe('CharacterImg', () => {
 
   beforeEach(() => {
     const muiTheme = getMuiTheme()
-    _wrapper = shallow(<CharacterImg character={character} />, {context: {muiTheme}});
+    _wrapper = shallow(<CharacterImg character={character} />, {context: {muiTheme}})
   });
 
   it('shows a circular progress icon when loading', () => {
@@ -27,5 +27,12 @@ describe('CharacterImg', () => {
   it('shows an image after loading', () => {
     _wrapper.setState({ loading: false })
     expect(_wrapper.find('img').length).toBe(1)
+  })
+
+  it('calls loadImg after mounting', () => {
+    const spy = jest.spyOn(CharacterImg.prototype, 'loadImg')
+    const image = _wrapper.instance()
+    image.componentDidMount()
+    expect(spy).toHaveBeenCalled()
   })
 })
