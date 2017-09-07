@@ -40,21 +40,29 @@ $ yarn start
 ```
 
 Browse ```localhost:3000``` to see the project running.
+Click the ```>``` button or reload the page to fetch another story.
 
 
 ## Running the tests
 
-Run yarn test to run all tests and activate the watcher.
+Run yarn test to activate the test watcher.
 
 ```
 $ yarn test
 ```
+Press ```a``` to run all tests.
+
 
 ## Deployment to Github Pages
 
-Create a new repository at your [Github](https://www.github.com) account.
+-------
+### Warning
+NEVER add your .env to the repository in a real project. The API keys are left here to simplify the exercise. In a production scenario, ask the user to provide her own API keys.
 
-Create a new branch called ```gh-pages```. Do not change it, it will be overwritten when you deploy. Keep using your ```master``` branch for editing.
+-------
+
+
+Create a new repository at your [Github](https://www.github.com) account.
 
 Set the project to your new repository.
 
@@ -68,11 +76,14 @@ Open ```package.json``` and set the homepage attribute:
   "homepage": "https://<your-username>.github.io/<your-repository/",
 ```
 
-Push your changes.
-
+Commit and push your changes.
 ```
+$ git add .
+$ git commit -m "Sets homepage"
 $ git push -u origin master
 ```
+
+Go to the repository page on Github. Create a new branch called ```gh-pages```. Do not change it, it will be overwritten when you deploy. Keep using your ```master``` branch for editing.
 
 Deploy
 
@@ -85,7 +96,7 @@ Done! Browse ```https://<your-username>.github.io/<your-repository>/``` to see y
 
 ## Built With
 
-* [React](http://facebook.github.io/react) - The web framework used
+* [React](http://facebook.github.io/react)
 
 ## Authors
 
