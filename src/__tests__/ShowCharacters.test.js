@@ -28,10 +28,6 @@ describe('ShowCharacters', () => {
     it('renders media component', () => {
       _wrapper = shallow(<ShowCharacters characters={characters}/>)
       expect(_wrapper.find(Media).length).toBe(1)
-      //expect(_wrapper.find(GridList).length).toBe(1)
-      //expect(_wrapper.find(GridTile).length).toBe(1)
-      //expect(_wrapper.find(CharacterImg).length).toBe(1)
-      //expect(_wrapper.find('p').length).toBe(1)
     })
   })
 })

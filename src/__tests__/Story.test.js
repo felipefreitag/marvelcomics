@@ -44,37 +44,4 @@ describe('Story', () => {
     story.componentDidMount()
     expect(spy).toHaveBeenCalled()
   })
-
-  it('gets', () => {
-    const response = {
-      data: {
-        data: {
-          results: ["foobar"],
-        },
-        attributionText: "foo",
-      }
-    }
-    let mock = new MockAdapter(axios)
-    const characterId = "1009368" // Iron Man
-    const total = 2915 // Total number of stories for Iron Man
-    const storyNum = randomize(total)
-    const ts = "1";
-    const { apiKey, hash } = getApiKeys(ts)
-    const url = `https://gateway.marvel.com/v1/public/characters/${characterId}/stories`
-    mock.onGet(url).reply(200, {response})
-    const muiTheme = getMuiTheme()
-    const _wrapper = shallow(<Story/>, {context: {muiTheme}});
-    let story = _wrapper.instance()
-    expect(_wrapper.state()).toEqual({
-      story: {},
-      attributionText: "",
-      loading: true,
-    })
-    _wrapper.simulate('componentDidMount')
-    expect(_wrapper.state()).toEqual({
-      story: "foobar",
-      attributionText: "foo",
-      loading: false,
-    })
-  })
 })

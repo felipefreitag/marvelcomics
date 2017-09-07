@@ -39,7 +39,7 @@ Run the server
 $ yarn start
 ```
 
-The server will run and open on your browser.
+Browse ```localhost:3000``` to see the project running.
 
 
 ## Running the tests
